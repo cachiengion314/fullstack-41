@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2 class="fs-md">Books List</h2>
+    <div id="popup" class="popup">
+        <h3 id="popup-title" class="popup-title fs-sm">Are you sure want to remove it?</h3>
+        <div class="yesno-pair">
+            <button id="no-btn" class="custom-btn fs-sm yesno-btn mr-5">Không</button>
+            <button id="yes-btn" class="custom-btn fs-sm yesno-btn mb-2">Có</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="deco-block mr-3"></div>
+
+        <div class="func-block mr-3">
+            <button id="add-btn" class="add-btn custom-btn fs-sm mb-2">+</button>
+
+            <div id="add-book" class="add-book">
+                <div class="name-input-pair mb-2">
+                    <div class="book-name fs-sm">Tên Sách</div>
+                    <input type="text" class="custom-input fs-sm">
+                </div>
+                <div class="name-input-pair mb-2">
+                    <div class="author fs-sm">Tác Giả</div>
+                    <input type="text" class="custom-input fs-sm">
+                </div>
+                <div class="name-input-pair mb-2">
+                    <div class="lsbn fs-sm">Mã Sách (LSBN)</div>
+                    <input type="text" class="custom-input fs-sm">
+                </div>
+                <div class="yesno-pair">
+                    <button id="no-btn" class="custom-btn fs-sm yesno-btn mr-5">Bỏ qua</button>
+                    <button id="yes-btn" class="custom-btn fs-sm yesno-btn mb-2">Thêm</button>
+                </div>
+            </div>
+
+            <h2 class="all-books-title fs-md">Các loại sách đã thêm</h2>
+
+            <div id="all-books" class="all-books">
+                <div class="book mb-2">
+                    <div class="index fs-sm">1.</div>
+                    <div class="book-name fs-sm">doi gio hu</div>
+                    <div class="author fs-sm">Victor hugo</div>
+                    <div class="lsbn fs-sm">0-306-40615</div>
+                </div>
+                <div class="book mb-2">
+                    <div class="index fs-sm">1.</div>
+                    <div class="book-name fs-sm">doi gio hu</div>
+                    <div class="author fs-sm">Victor hugo</div>
+                    <div class="lsbn fs-sm">0-306-40615</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="deco-block"></div>
+
+    </div>
+
+</body>
+<script src="app.js" type="module"></script>
+
+</html>
