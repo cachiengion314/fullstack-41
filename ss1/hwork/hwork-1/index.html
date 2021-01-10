@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2 class="fs-md">Tasks List</h2>
+    <div id="popup" class="popup">
+        <h3 id="popup-title" class="popup-title fs-sm">Are you sure want to remove it?</h3>
+        <div class="yesno-pair">
+            <button id="no-btn" class="custom-btn fs-sm yesno-btn mr-5">Không</button>
+            <button id="yes-btn" class="custom-btn fs-sm yesno-btn mb-2">Có</button>
+        </div>
+    </div>
+    <div class="container">
+        <div class="deco-block"></div>
+        <div class="func-block">
+            <div class="input-btn-pair mb-2">
+                <input id="add-input" type="text" class="add-input custom-input fs-sm">
+                <button id="add-btn" class="add-btn custom-btn fs-sm">+</button>
+            </div>
+            <div id="all-tasks" class="tasks">
+                <!-- tasks here -->
+            </div>
+        </div>
+        <div class="deco-block"></div>
+    </div>
+
+</body>
+<script src="app.js" type="module"></script>
+
+</html>
