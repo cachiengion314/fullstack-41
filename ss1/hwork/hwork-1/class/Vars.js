@@ -45,19 +45,19 @@ export default class Vars {
     }
     static getYesBtn() {
         if (!_$yesBtn) {
-            return document.querySelector(`#yes-btn`);
+            _$yesBtn = document.querySelector(`#yes-btn`);
         }
         return _$yesBtn;
     }
     static getNoBtn() {
         if (!_$noBtn) {
-            return document.querySelector(`#no-btn`);
+            _$noBtn = document.querySelector(`#no-btn`);
         }
         return _$noBtn;
     }
     static getPopupDOM() {
         if (!_$popup) {
-            return document.querySelector(`#popup`);
+            _$popup = document.querySelector(`#popup`);
         }
         return _$popup;
     }
@@ -85,21 +85,21 @@ export default class Vars {
     }
     static getAddInput() {
         if (!_$addInput) {
-            return document.querySelector(`#add-input`);
+            _$addInput = document.querySelector(`#add-input`);
         }
         return _$addInput;
     }
     static getAddBtn() {
         if (!_$addBtn) {
-            return document.querySelector(`#add-btn`);
+            _$addBtn = document.querySelector(`#add-btn`);
         }
         return _$addBtn;
     }
     static getAllTasksDOM() {
         if (!_$allTasks) {
-            return document.querySelector(`#all-tasks`);
+            _$allTasks = document.querySelector(`#all-tasks`);
         }
-        return _$allTasks
+        return _$allTasks;
     }
     static createTask(index, content) {
         let _TASK = `
