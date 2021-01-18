@@ -35,5 +35,5 @@ fs.writeFile(`number.txt`, `2 3 5 7 9`, (e) => {
 const oddNumber = 5;
 console.log(`${oddNumber} la so: `, myisOdd(oddNumber));
 
-// find error with fs.readFileSynce since this function doesn't throw any error
+// find error with fs.readFileSynce since this function doesn't support to throw any error
 // try { let data = fs.readFileSync()}catch (err) { throw new Error(err) }
