@@ -1,5 +1,6 @@
 const fs = require(`fs`);
 const studentDatabase = JSON.parse(fs.readFileSync(`./data.json`, { encoding: "utf-8" }));
+// const studentDatabase = require(`./data.json`); only effecty with .json file
 
 // Sử dụng các hàm đọc, ghi file đồng bộ để hoàn thiện các yêu cầu sau
 // lấy thông tin học sinh có _id là jubuq3lfmjjmp0wrdeupt
