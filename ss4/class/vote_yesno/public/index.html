@@ -6,17 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/style.css">
-    <title>Document</title>
+    <title>Yes/No App</title>
 </head>
 
 <body>
-    <h2>Hỏi cộng đồng một câu hỏi đúng/sai hoặc có/không</h2>
-    <form action="" id="form-question">
-        <textarea name="" cols="30" rows="10" id="create-textarea"></textarea>
-        <button type="submit">click me to submit</button>
-    </form>
+    <navh-bar></navh-bar>
+    <h2 class="fs-md">Câu hỏi ngẫu nhiên trong cơ sở dữ liệu</h2>
+    <div class="main-container">
+        <div class="align-center">
+            <div class="question-block align-center">
+                <div id="question" class="question fs-md">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Reiciendis, dolore, aut quo rerum, tenetur quasi facilis fugit a dignissimos totam qui suscipit eum.
+                    Et possimus odio velit inventore obcaecati amet?</div>
+                <div class="yesno-pair">
+                    <button id="no-btn" class="custom-btn yesno-btn fs-md">Sai</button>
+                    <button id="yes-btn" class="custom-btn yesno-btn fs-md">Đúng</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
+<script src="Utility.js"></script>
+<script src="Vars.js"></script>
+<script src="NavHorizontalBar.js"></script>
 <script src="index.js"></script>
 
 </html>
