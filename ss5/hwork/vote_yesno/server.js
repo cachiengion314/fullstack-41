@@ -1,17 +1,12 @@
-// npm init -y: auto asign all entry for initialize node package manager
-// framework bigger than libery, express is a framework to build backend system. (Nginx, Apache, NodeJS)
-// npm init : create local npm
 console.log(`---server.js---`);
 require(`dotenv`).config();
 const express = require(`express`);
 const fs = require(`fs`);
 const app = express();
-const path = require(`path`); // giải quyết vấn để conflict đường dẫn giữa các OS
+const path = require(`path`);
 const PORT = process.env.PORT || 8000;
 
-// config cho client gửi lên với header application/x-www-form-urlencoded'
 app.use(express.urlencoded({ extended: true }));
-// config cho client gửi lên với header 'Content-Type': 'application/json'
 app.use(express.json());
 app.use(`/public`, express.static(`public`));
 
@@ -94,7 +89,6 @@ app.post(`/create-question`, (request, response) => {
 });
 
 app.get(`/*`, (request, response) => {
-    // give client 404 page when user write wrong direction
     response.sendFile(path.resolve(__dirname, `public`, `page404`, `page404.html`));
 });
 

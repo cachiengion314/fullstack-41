@@ -1,6 +1,6 @@
 const vars = new Vars();
 const utility = new Utility();
-const mainPage = "/";
+const mainPage = "/public";
 const MAX_WORDS = 200;
 
 vars.getQuestionTextarea().oninput = () => {
