@@ -1,0 +1,144 @@
+/* main style section */
+
+html {
+    font-size: 1vmax;
+}
+
+.align-center {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-container {
+    width: 70vw;
+    height: fit-content;
+    margin: 5vh auto;
+    display: flex;
+}
+
+.custom-btn {
+    display: block;
+    border: darkcyan 1px solid;
+    outline-width: 0px;
+    background-color: white;
+    border-radius: .5rem;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+::placeholder {
+    color: darkcyan;
+    opacity: .5;
+}
+
+.custom-btn:disabled {
+    background-color: #f1f1f1;
+}
+
+.custom-btn:hover:enabled {
+    background-color: #eef8ef;
+}
+
+.custom-btn:active {
+    background-color: #e2ffe4;
+}
+
+.fs-sm {
+    font-size: 1.3rem;
+    color: darkcyan;
+}
+
+.fs-md {
+    font-size: 1.6rem;
+    color: darkcyan;
+}
+
+/* question block section  */
+
+.border-opacity {
+    border: 1px solid darkcyan;
+    border-radius: .5rem;
+}
+
+.question-block {
+    width: fit-content;
+    height: fit-content;
+    padding: 10px 10px;
+}
+
+.question {
+    height: fit-content;
+    width: fit-content;
+    padding-bottom: 5%;
+}
+
+.yesno-percent {
+    display: flex;
+    width: 100%;
+}
+
+.yesno-pair {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.yesno-btn {
+    height: 34px;
+    width: 29%;
+}
+
+/* navigation bar section */
+
+.vert-bar {
+    height: 70%;
+    width: 1px;
+    background-color: darkcyan;
+}
+
+.custom-nav {
+    list-style-type: none;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 3vmax;
+    border: darkcyan 1px solid;
+}
+
+.custom-li {
+    background-color: inherit;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.custom-li:hover {
+    background-color: #eef8ef;
+}
+
+.deco-none {
+    text-decoration: none;
+}
+
+/* ask html section  */
+
+#submit-btn {
+    height: 42px;
+    width: 100%;
+}
+
+#form-question {
+    width: fit-content;
+    height: fit-content;
+}
+
+.custom-textarea {
+    width: fit-content;
+    padding-left: 6px;
+    padding-top: 4px;
+    border: 1px darkcyan solid;
+    border-radius: .5rem;
+    outline: none;
+}

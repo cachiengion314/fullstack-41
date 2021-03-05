@@ -5,6 +5,15 @@ const fs = require(`fs`);
 const app = express();
 const path = require(`path`);
 const PORT = process.env.PORT || 8000;
+const mongoose = require(`mongoose`);
+const QuestionModel = require(`./question`);
+
+const con = mongoose.connect('mongodb://localhost:27017/vote', { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
+    if (err) {
+        return;
+    }
+    console.log(`mongodb server is connected!`)
+});
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -65,26 +74,20 @@ app.put(`/add-vote/:questionid`, (request, response) => {
     }
 });
 
-app.post(`/create-question`, (request, response) => {
-    let data;
-    try {
-        data = JSON.parse(fs.readFileSync('data.json'));
-    } catch (err) {
-        data = [];
-    }
+app.post(`/create-question`, async (request, response) => {
     const newQuestion = {
-        _id: data.length + 1,
         content: request.body.content,
         yes: 0,
         no: 0,
     }
 
-    console.log(request.body);
-    let newData = [...data, newQuestion];
-    fs.writeFileSync(`data.json`, JSON.stringify(newData));
+    console.log(`request.body:`, request.body);
+
+    const saveQuestion = await QuestionModel.create(newQuestion);
+
     response.send({
         success: 1,
-        data: newQuestion,
+        data: saveQuestion,
     });
 });
 
