@@ -46,7 +46,7 @@ app.get(`/data`, async (request, response) => {
         q = await QuestionModel.aggregate().sample(1);
 
     } catch (err) {
-        return response.status(500).send({ messenger: `i can't believe the empty thing is still exist in this day` });
+        return response.status(500).send({ messenger: `${err}` });
     }
 
     // let randomQuestion = lodash.sample(Database);
@@ -54,6 +54,30 @@ app.get(`/data`, async (request, response) => {
     //     { ...q[0].toObject(), isQueryins: false }
     // );
     response.status(200).send(q[0]);
+});
+app.get(`/question/max-yes`, async (request, response) => {
+    let resultQuery;
+    try {
+        resultQuery = await QuestionModel.find().sort({ yes: -1 }).limit(1);
+    } catch (err) {
+        return response.status(500).send({ messenger: `${err}` });
+    }
+    response.status(200).send(resultQuery);
+});
+app.get(`/content-filter/:contentkeyword`, async (request, response) => {
+    const { contentkeyword } = request.params;
+    
+    let foundContents;
+    let resultQuery;
+    try {
+        resultQuery = await QuestionModel.find();
+        foundContents = resultQuery.filter(elt => {
+            return elt.content.includes(contentkeyword);
+        })
+    } catch (err) {
+        return response.status(500).send({ messenger: `${err}` });
+    }
+    response.status(200).send(foundContents);
 });
 
 app.put(`/add-vote/:questionid`, async (request, response) => {

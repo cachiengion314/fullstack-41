@@ -16,7 +16,7 @@ const getQuestionBLock = function () {
     const QUESTION_BLOCK = `
         <div class="question-block border-opacity mb-5">
             <div id="question" class="question fs-md">
-                ${question._id}. ${question.content}
+                ${`question from database `}: ${question.content}
             </div>
             <div class="yesno-percent">
                 ${noBtn}

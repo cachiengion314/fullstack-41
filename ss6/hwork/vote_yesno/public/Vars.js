@@ -1,5 +1,39 @@
 class Vars {
+    static getInstant() {
+        return new Vars();
+    }
     constructor() {
+        // find html section
+        let _findSearchItems;
+        this.getFindSearchItems = () => {
+            if (!_findSearchItems) {
+                _findSearchItems = $(`#search-items`);
+            }
+            return _findSearchItems;
+        }
+        let _findInput;
+        this.getFindInput = () => {
+            if (!_findInput) {
+                _findInput = $(`#find-input`)[0];
+            }
+            return _findInput;
+        }
+        let _findForm;
+        this.getFindFrom = () => {
+            if (!_findForm) {
+                _findForm = $(`#find-form`)[0];
+            }
+            return _findForm;
+        }
+        let _findMostYesBtn;
+        this.getFindMostYesBtn = () => {
+            if (!_findMostYesBtn) {
+                _findMostYesBtn = $(`#find-mostyes-btn`)[0];
+            }
+            return _findMostYesBtn;
+        }
+
+        // index html section
         const yesno_objDefault = {
             _idQuestion: null
         }
@@ -18,7 +52,7 @@ class Vars {
             }
             return JSON.parse(localStorage.getItem(KEY_YESNO_OBJ))._idQuestion;
         }
-        // index html
+
         let _removeBtn;
         this.getRemoveBtn = () => {
             if (!_removeBtn) {
@@ -47,7 +81,7 @@ class Vars {
             }
             return _yesBtn;
         }
-        // ask html
+        // ask html section
         let _questionForm;
         let _questionTextarea;
         let _countWord;
@@ -83,7 +117,7 @@ class Vars {
             }
             return _submitBtn;
         }
-        // all_question html
+        // all_question html section
         let _allQuestionDOM;
         this.getAllQuestionDOM = () => {
             if (!_allQuestionDOM) {
@@ -91,10 +125,14 @@ class Vars {
             }
             return _allQuestionDOM;
         }
-        let _allBtns;
         this.getAllButtons = () => {
+            let _allBtns;
             if (!_allBtns) {
                 _allBtns = $(`#all-question button`);
+
+                if (_allBtns.length === 0) {
+                    _allBtns = $(`#search-items button`);
+                }
             }
             return _allBtns;
         }
