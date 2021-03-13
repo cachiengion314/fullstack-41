@@ -21,6 +21,7 @@ async function findMostYes() {
     try {
         let rawData = await fetch(`/question/max-yes`);
         foundData = await rawData.json();
+        
     } catch (err) {
         return console.log(err);
     }

@@ -1,0 +1,30 @@
+<div class="w-100 align-center">
+    <div class="darkcyan fw-bold fs-md">Edit stage</div>
+    <div id="data-card-id" data-card-id="<%= selectedCard._id %>" class="darkcyan fs-sm">card id: <%= selectedCard._id %></div>
+    <div class="w-75">
+        <div class="darkcyan fw-bold fs-sm">Front side</div>
+        <textarea id="front-side-form" rows="3" maxlength="100" class="custom-input w-100"><%= selectedCard.frontside %></textarea>
+    </div>
+    <div class="w-75">
+        <div class="darkcyan fw-bold fs-sm">Back side</div>
+        <textarea id="back-side-form" rows="3" maxlength="100" class="custom-input w-100"><%= selectedCard.backside %></textarea>
+    </div>
+    <div class="w-75 mb-3">
+        <div class="darkcyan fw-bold fs-sm">Category</div>
+        <div id="dropdown-form" data-selected-item="<%= selectedCard.category %>" class="dropdown">
+            <button id="dropdown-invoke-btn" class="custom-btn dropdown-toggle darkcyan w-25" type="button"
+                data-bs-toggle="dropdown">
+                Other
+                <span class="caret"></span>
+            </button>
+            <ul id="dropdown-menu" class="dropdown-menu">
+                <li><button class="dropdown-item darkcyan" data-dropdown-item="other">other</button></li>
+                <li><button class="dropdown-item darkcyan" data-dropdown-item="code">code</button></li>
+                <li><button class="dropdown-item darkcyan" data-dropdown-item="vocal">vocal</button></li>
+            </ul>
+        </div>
+    </div>
+    <button id="save-btn" class="w-50 custom-btn darkcyan">Save</button>
+
+</div>
+<script src="/assets/js/edit.js"></script>

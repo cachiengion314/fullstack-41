@@ -1,0 +1,41 @@
+<div class="w-100 mb-2 align-h-center">
+    <button id="random-btn" class="custom-btn fs-sm darkcyan me-1">Random</button>
+    <button id="code-btn" class="custom-btn fs-sm darkcyan me-1">Code</button>
+    <button id="vocal-btn" class="custom-btn fs-sm darkcyan me-1">Vocal</button>
+    <button id="other-btn" class="custom-btn fs-sm darkcyan">Other</button>
+</div>
+
+<div class="d-flex mb-2 justify-content-center">
+    <div class="flip-container ">
+        <div id="memory-text" class="darkcyan position-absolute custom-border" style="top: 3px; left: 3px">Remembered
+        </div>
+        <div class="flipper">
+            <div class="front d-flex flex-column">
+                <!-- front content -->
+                <div id="spinner-grow" class="spinner-grow d-none darkcyan" disabled="true" role="status">
+                    <span class="sr-only"></span>
+                </div>
+                <div class="fs-sm front-category-text fw-bold darkcyan">
+                    Category: <%= randomCard.category %>
+                </div>
+                <div class="fs-sm front-content-text text-center darkcyan">
+                    <%= randomCard.frontside %>
+                </div>
+            </div>
+            <div class="back">
+                <!-- back content -->
+                <div class="fs-sm back-content-text text-center darkcyan">
+                    <%= randomCard.backside %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="w-100 mb-2 align-h-center">
+    <button id="flip-btn" class="custom-btn fs-sm darkcyan me-1"><i class="fas fa-sync"></i>Flip</button>
+    <a href="/edit?id=<%= randomCard._id %>" id="edit-btn" class="custom-btn fs-sm darkcyan me-1"><i class="far fa-edit"></i>Edit</a>
+    <button id="memory-btn" data-card="<%= JSON.stringify(randomCard) %>" class="custom-btn fs-sm darkcyan me-1">Remember</button>
+    <button id="next-btn" class="custom-btn fs-sm darkcyan"><i class="fas fa-angle-double-right"></i>Next</button>
+</div>
+<script src="/assets/js/flip-box.js"></script>

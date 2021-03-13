@@ -1,0 +1,29 @@
+<div class="w-100 align-center">
+    <h3 class=" fw-bold darkcyan">Edit this flashcard</h3>
+    <div class="w-75">
+        <div class="fs-sm darkcyan fw-bold">Front side</div>
+        <textarea id="front-side-form" rows="3" maxlength="100" class="w-100 custom-input"></textarea>
+    </div>
+    <div class="w-75">
+        <div class="fs-sm darkcyan fw-bold">Back side</div>
+        <textarea id="back-side-form" rows="3" maxlength="100" class="w-100 custom-input"></textarea>
+    </div>
+    <div class="w-75 mb-3">
+        <div class="fs-sm darkcyan fw-bold">Category</div>
+        <div id="dropdown-form" class="dropdown">
+            <button id="dropdown-invoke-btn" class="custom-btn darkcyan dropdown-toggle w-25" type="button"
+                data-bs-toggle="dropdown">
+                Other
+                <span class="caret"></span>
+            </button>
+            <ul id="dropdown-menu" class="dropdown-menu " aria-labelledby="dropdownMenuOffset">
+                <li><button class="dropdown-item darkcyan" data-dropdown-item="other">other</button></li>
+                <li><button class="dropdown-item darkcyan" data-dropdown-item="code">code</button></li>
+                <li><button class="dropdown-item darkcyan" data-dropdown-item="vocal">vocal</button></li>
+            </ul>
+        </div>
+    </div>
+    <button id="save-btn" class="w-50 darkcyan custom-btn">Save</button>
+
+</div>
+<script src="/assets/js/create.js"></script>

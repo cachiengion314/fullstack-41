@@ -55,18 +55,10 @@ app.get(`/data`, async (request, response) => {
     // );
     response.status(200).send(q[0]);
 });
-app.get(`/question/max-yes`, async (request, response) => {
-    let resultQuery;
-    try {
-        resultQuery = await QuestionModel.find().sort({ yes: -1 }).limit(1);
-    } catch (err) {
-        return response.status(500).send({ messenger: `${err}` });
-    }
-    response.status(200).send(resultQuery);
-});
+
+// truyen du lieu qua pathname thi chi dung khi truyen id
 app.get(`/content-filter/:contentkeyword`, async (request, response) => {
     const { contentkeyword } = request.params;
-    
     let foundContents;
     let resultQuery;
     try {
@@ -153,6 +145,41 @@ app.delete(`/remove/:id`, async (request, response) => {
     console.log(`Database`, Database)
     response.status(200).send({ messenger: `remove success!` });
 });
+
+app.get(`/question/max-yes`, async (request, response) => {
+    let resultQuery;
+    try {
+        resultQuery = await QuestionModel.find().sort({ yes: -1 }).skip(0).limit(1);
+
+    } catch (err) {
+        return response.status(500).send({ messenger: `${err}` });
+    }
+    response.status(200).send(resultQuery);
+});
+
+// app.get(`/question/max-yes`, async (request, response) => {
+//     let maxYesQuestion;
+//     try {
+//         maxYesQuestion = await QuestionModel.aggregate()
+//             .group({
+//                 _id: null,
+//                 doc: {
+//                     $max: {
+//                         yes: `$yes`,
+//                         _id: `$_id`,
+//                         content: `$content`
+//                     }
+//                 }
+//             })
+
+//         console.log(`maxYesQuestion`, maxYesQuestion)
+
+//     } catch (err) {
+//         return response.status(500).send({ messenger: `${err}` });
+//     }
+
+//     response.sendStatus(200).send(maxYesQuestion[0]);
+// });
 
 app.get(`/*`, (request, response) => {
     response.sendFile(path.resolve(__dirname, `public`, `page404`, `page404.html`));
