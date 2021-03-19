@@ -32,19 +32,19 @@ randomBtn.onclick = () => {
 }
 codeBtn.onclick = () => {
     toggleSpinnerGrow();
-    window.location.href = `/?category=code`;
+    window.location.href = `/?category=code&ex_id=${thisCardData._id}`;
 }
 vocalBtn.onclick = () => {
     toggleSpinnerGrow();
-    window.location.href = `/?category=vocal`;
+    window.location.href = `/?category=vocal&ex_id=${thisCardData._id}`;
 }
 otherBtn.onclick = () => {
     toggleSpinnerGrow();
-    window.location.href = `/?category=other`;
+    window.location.href = `/?category=other&ex_id=${thisCardData._id}`;
 }
 nextBtn.onclick = () => {
     toggleSpinnerGrow();
-    window.location.href = `/`;
+    window.location.href = `/?ex_id=${thisCardData._id}`;
 }
 
 memoryBtn.onclick = () => {

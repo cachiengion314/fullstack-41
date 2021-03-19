@@ -3,16 +3,22 @@ const mongoose = require(`mongoose`);
 let schema = new mongoose.Schema({
     frontside: {
         type: String,
-        require: true
+        required: true
     },
     backside: {
         type: String,
-        require: true,
+        required: true,
     },
-    category: String,
+    category: {
+        type: String,
+        required: true,
+        enum: ["code", "vocal", "other"],
+        default: "other"
+    },
     memory: {
         type: Boolean,
-        require: true,
+        required: true,
+        default: false
     }
 })
 
