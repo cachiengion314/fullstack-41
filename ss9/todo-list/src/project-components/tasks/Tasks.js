@@ -9,13 +9,16 @@ class Tasks extends Component {
             return preVal;
         }, 0);
     }
+
     render() {
+        const countTask = this.countTaskInProgress(this.props.tasks);
         return (
             <div className={this.props.className}>
                 {
                     // eslint-disable-next-line
-                    this.countTaskInProgress(this.props.tasks) &&
-                    <h5>{`There are ${this.countTaskInProgress(this.props.tasks)} task to complete`}</h5>
+                    countTask &&
+                    // eslint-disable-next-line
+                    <h5>{`There ${countTask > 1 && "are" || "is"} ${countTask} task to complete`}</h5>
                     // eslint-disable-next-line
                     ||
                     <h5>{`All tasks are done`}</h5>
