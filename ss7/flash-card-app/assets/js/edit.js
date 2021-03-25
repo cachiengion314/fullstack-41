@@ -46,4 +46,5 @@ async function updateCard(url, formUrlencoded) {
     }
     alert(`update successfully!`);
     window.location.href = `/`;
+    // get the id: location.pathname.split("/").pop()
 }
