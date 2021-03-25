@@ -46,7 +46,7 @@ class App extends Component {
       task[key] = val;
     }
     task._id = Utility.getRandomHash();
-    this.setState({ tasks: [...this.state.tasks, task], formInputVal: "" })
+    this.setState({ tasks: [...this.state.tasks, task], formInputVal: "" });
   }
   render() {
     return (
