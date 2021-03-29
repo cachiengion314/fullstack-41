@@ -4,16 +4,38 @@ import Header from "./project-components/header"
 import SearchForm from './project-components/search-form';
 import ImgCards from './project-components/img-card/ImgCards';
 import React, { Component } from "react";
+import Loading from './project-components/header/loading/Loading';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      content: "Let search !!!"
+      content: "Let search !!!",
+      images: [],
+      isLoading: false,
     }
-    console.log(`constructor`)
+    // console.log(`constructor`)
+  }
+  changleLoadingStatus = () => {
+    if (this.state.isLoading) {
+      this.setState({ isLoading: false })
+    } else {
+      this.setState({ isLoading: true })
+    }
   }
 
+  changleImages = (images, offset) => {
+    if (offset === 0) {
+      this.setState({ images })
+    } else {
+      this.setState(pre => {
+        return {
+          isLoading: false,
+          images: [...pre.images, ...images]
+        }
+      })
+    }
+  }
   componentDidMount() {
     setTimeout(() => {
       this.setState({ content: "tim kiem" })
@@ -24,7 +46,7 @@ class App extends Component {
   componentDidUpdate() {
     console.log(`componentDidUpdate`)
   }
-  
+
   componentWillUnmount() {
     console.log(`componentWillUnmount`)
   }
@@ -34,8 +56,9 @@ class App extends Component {
     return (
       <div className="w-100 App " >
         <Header content={this.state.content} />
-        <SearchForm />
-        <ImgCards />
+        <SearchForm changleLoadingStatus={this.changleLoadingStatus} changleImages={this.changleImages} />
+        <Loading isLoading={this.state.isLoading} />
+        <ImgCards images={this.state.images} />
       </div>
     )
   }
