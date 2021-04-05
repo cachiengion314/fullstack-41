@@ -30,24 +30,54 @@ router.get(`/`,
     }
 )
 
-//
+// 
 // http://localhost:8080/api/posts/6065e259205f630e0ec81569
 //
 router.get(`/:postId`,
-    (req, res, next) => {
-        next()
-    }
-    , async (request, response) => {
+    async (request, response) => {
         const { postId } = request.params
         try {
-            const post = await PostController.getSpecifiedPost(postId)
-            response.send({ success: 1, data: post })
+            const comments = await PostController.getDetailPost(postId)
+            response.send({ success: 1, data: comments })
         } catch (err) {
             console.log(`err`, err)
             response.send({ success: 0 })
         }
     }
 )
+//
+// http://localhost:8080/api/posts/comments/6065e259205f630e0ec81569
+//
+router.get(`/comments/:postId`,
+    async (request, response) => {
+        const { postId } = request.params
+        try {
+            const comments = await PostController.getComments(postId)
+            response.send({ success: 1, data: comments })
+        } catch (err) {
+            console.log(`err`, err)
+            response.send({ success: 0 })
+        }
+    }
+)
+//
+// http://localhost:8080/api/posts/6065e259205f630e0ec81569
+//
+// router.get(`/:postId`,
+//     (req, res, next) => {
+//         next()
+//     }
+//     , async (request, response) => {
+//         const { postId } = request.params
+//         try {
+//             const post = await PostController.getSpecifiedPost(postId)
+//             response.send({ success: 1, data: post })
+//         } catch (err) {
+//             console.log(`err`, err)
+//             response.send({ success: 0 })
+//         }
+//     }
+// )
 //
 // http://localhost:8080/api/posts
 //

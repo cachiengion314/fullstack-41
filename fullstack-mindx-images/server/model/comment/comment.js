@@ -2,6 +2,7 @@ const mongoose = require(`mongoose`);
 const CommentSchema = new mongoose.Schema({
     postId: {
         type: mongoose.Types.ObjectId, // postId
+        ref: "post"
     },
     content: {
         type: String,
@@ -9,6 +10,7 @@ const CommentSchema = new mongoose.Schema({
     },
     createdBy: {
         type: mongoose.Types.ObjectId, // userId
+        ref: "user"
     },
 }, { timestamps: true });
 

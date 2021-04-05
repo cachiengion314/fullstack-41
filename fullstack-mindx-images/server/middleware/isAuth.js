@@ -8,6 +8,7 @@ const isAuth = async (req, res, next) => {
         if (!authHeaders) {
             throw new Error(`empty token`)
         }
+        // jwt.verify() decode the PRIVATE_KEY into the obj
         const decodeToken = jwt.verify(authHeaders, process.env.PRIVATE_KEY)
         const { userId } = decodeToken
         const existUser = await UserModel.findById(userId)
