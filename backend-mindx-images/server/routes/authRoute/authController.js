@@ -16,7 +16,7 @@ const createUser = async ({ email, password }) => {
 }
 
 const login = async ({ email, password }) => {
-    const existedUser = await UserModel.findOne({ email }) // .lean() => convert to normal obj || query mongoose
+    const existedUser = await UserModel.findOne({ email }).lean() // .lean() => convert to normal obj || query mongoose
     if (!existedUser) {
         throw new Error(`not existed user!`);
     }
@@ -26,9 +26,7 @@ const login = async ({ email, password }) => {
     if (!comparePassword) {
         throw new Error(`Password is wrong!`);
     }
-
     // encrypt user info
-
     const data = { userId: existedUser._id }
     // func jwt.sign() create a obj
     const token = jwt.sign(
@@ -37,7 +35,7 @@ const login = async ({ email, password }) => {
         { expiresIn: process.env.EXPIRE_TIME }
     )
     console.log(`token`, token)
-    return { ...existedUser, token }
+    return { existedUser, token }
 }
 
 
