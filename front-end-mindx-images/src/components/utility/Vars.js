@@ -20,7 +20,7 @@ const Vars = {
         return false
     },
     checkEmailInput: (email_input) => {
-        let checkemail_regexp = /^\S+@.+\.com$/i
+        let checkemail_regexp = /^[a-zA-Z]+@.+/i
         if (checkemail_regexp.test(email_input)) {
             return true
         }
