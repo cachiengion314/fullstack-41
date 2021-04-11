@@ -23,4 +23,4 @@ app.use(`/api/comments`, commentRoute)
 // listen
 app.listen(PORT, () => {
     console.log(`server is listen at ${PORT}`);
-});
+})

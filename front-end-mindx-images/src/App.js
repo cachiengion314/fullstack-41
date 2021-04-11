@@ -10,15 +10,16 @@ import './App.css';
 import Login from './pages/Login/Login';
 import SignUp from './pages/Signup/Signup';
 import MainLayout from './components/Layout/MainLayout';
+import Home from './pages/home/Home';
 
 function App() {
- 
+
   return (
     <Router>
       <MainLayout>
         <Switch>
           <Route exact path="/" >
-            <div>Home</div>
+            <Home />
           </Route>
           <Route path="/login">
             <Login />

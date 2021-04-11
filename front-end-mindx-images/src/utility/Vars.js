@@ -1,26 +1,37 @@
 const Vars = {
-    authenticateUserInput: (email_input, password_input) => {
+    PAGE_SIZE: 4,
+    getDataFromPage: async (client, page) => {
+        return await client({
+            url: "/api/posts",
+            method: "GET",
+            params: {
+                page: page,
+                pageSize: Vars.PAGE_SIZE,
+            }
+        })
+    },
+    authenticateUserInput: (email_input, password_input, emailFailAction, passwordFailAction) => {
         const isEmailInputValid = Vars.checkEmailInput(email_input);
         const isPasswordInputValid = Vars.checkPasswordInput(password_input);
         if (!isEmailInputValid) {
-            alert(`You need to check your email again! Your providing are probably fake!`)
+            emailFailAction()
             return false
         }
         if (!isPasswordInputValid) {
-            alert(`Check your password again! Maybe your password is not strong enough!`)
+            passwordFailAction()
             return false
         }
         return true
     },
     checkPasswordInput: (password_input) => {
-        let check = /^\S{3,}/i
+        let check = /^\S{3,}/
         if (check.test(password_input)) {
             return true
         }
         return false
     },
     checkEmailInput: (email_input) => {
-        let checkemail_regexp = /^[a-zA-Z]\S+@.+/i
+        let checkemail_regexp = /^[a-zA-Z]\S+@.+/
         if (checkemail_regexp.test(email_input)) {
             return true
         }

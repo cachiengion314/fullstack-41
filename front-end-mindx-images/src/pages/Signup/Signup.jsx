@@ -1,13 +1,14 @@
 import AuthLayout from '../../components/Layout/AuthLayout'
 import { Form, Button } from 'react-bootstrap'
 import { useState } from 'react'
-import axios from 'axios'
-import Vars from '../../components/utility/Vars'
+import axios from '../../api'
+import Vars from '../../utility/Vars'
 
 const SignUp = () => {
   const [email, setEmail] = useState('example@gmail.com')
   const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')  // note that: setState is a async funciton
+  const [isMatch, setMatch] = useState(false)
 
   const onHandleChange = e => {
     setEmail(e.target.value)
@@ -16,8 +17,18 @@ const SignUp = () => {
   const onHandleChangePass = e => {
     setPassword(e.target.value)
   }
+  const comparePassword = (password, confirmPassword) => {
+    if (password === confirmPassword) {
+      setMatch(true)
+    } else {
+      setMatch(false)
+    }
+  }
   const onHandleChangeConfirmPass = e => {
-    setConfirmPassword(e.target.value)
+    const confirmPassword = e.target.value
+    setConfirmPassword(confirmPassword) // setConfirmPassword is async function so the confirmPassword will not have the newest info
+    // cannot compare: password === confirmPassword in this callback
+    comparePassword(password, confirmPassword)
   }
 
   const onHandleSubmit = async (e) => {
@@ -27,25 +38,34 @@ const SignUp = () => {
       alert(`your confirm password is not valid`)
       return
     }
-    if (!Vars.authenticateUserInput(email, password)) {
+    if (!Vars.authenticateUserInput(email, password,
+      () => { alert(`You need to check your email again! Your providing are probably fake!`) },
+      () => { alert(`Check your password again! Maybe your password is not strong enough!`) })) {
       return
     }
-
-    const res = await axios({
-      url: 'http://localhost:8080/api/auth/signup',
-      method: 'POST',
-      data: {
-        email,
-        password
-      },
-    })
-
-    if (res.data.success) {
-      alert('Sign up success!')
-      setEmail("")
-      setPassword("")
-      setConfirmPassword("")
+    // axios mặc định status server không trả về 200 thì => thorw err
+    // fetch không có cơ chế trên, check response.ok
+    try {
+      const res = await axios({
+        url: '/api/auth/signup',
+        method: 'POST',
+        data: {
+          email,
+          password
+        },
+      })
+      if (res.data.success) {
+        alert('Sign up success!')
+        setEmail("")
+        setPassword("")
+        setConfirmPassword("")
+        return
+      }
+      return alert("something went wrong")
+    } catch (err) {
+      return alert(`${err}`)
     }
+
   }
   return (
     <AuthLayout>
@@ -78,6 +98,10 @@ const SignUp = () => {
               value={confirmPassword}
               onChange={onHandleChangeConfirmPass}
             />
+            {
+              (confirmPassword && !isMatch) &&
+              <span style={{ color: "red" }}>wrong confirm password</span >
+            }
           </Form.Group>
           <Button className="mt-3" variant="primary" type="submit" block>
             Submit

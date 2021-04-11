@@ -1,7 +1,7 @@
 import AuthLayout from '../../components/Layout/AuthLayout'
 import { Form, Button } from 'react-bootstrap'
 import { useState } from 'react'
-import axios from 'axios'
+import axios from '../../api'
 
 const Login = () => {
   const [email, setEmail] = useState('cachiengion314@gmail.com') // email: cachiengion314@gmail.com
@@ -19,8 +19,10 @@ const Login = () => {
     e.preventDefault()
     console.log(email, password)
 
+    // origin: http://localhost:3000
+    // call server http://localhost:8080
     const res = await axios({
-      url: 'http://localhost:8080/api/auth/login',
+      url: '/api/auth/login',
       method: 'POST',
       data: {
         email,

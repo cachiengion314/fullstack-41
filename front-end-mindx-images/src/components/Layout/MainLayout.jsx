@@ -12,14 +12,20 @@ const MainLayout = ({ children }) => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
-                        <Link to="/signup" className="mx-3 text-light">Sign Up</Link>
-                        <Link to="/login" className="text-light">Log In</Link>
+                        <Nav.Item>
+                            <Link to="/signup" className="mx-3 text-light">Sign Up</Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Link to="/login" className="mx-3 text-light">Log In</Link>
+                        </Nav.Item>
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
-            {
-                children
-            }
+            <div className="w-100 content">
+                {
+                    children
+                }
+            </div>
         </>
     )
 }
