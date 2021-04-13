@@ -12,7 +12,15 @@ const createUser = async ({ email, password }) => {
     const salt = bcrypt.genSaltSync(10);
     const hashPasswrod = bcrypt.hashSync(password, salt);
     const newUser = await UserModel.create({ email, password: hashPasswrod })
-    return newUser
+    // encrypt user info
+    const data = { userId: newUser._id }
+    // func jwt.sign() create a obj
+    const token = jwt.sign(
+        data,
+        process.env.PRIVATE_KEY,
+        { expiresIn: process.env.EXPIRE_TIME }
+    )
+    return { newUser, token }
 }
 
 const login = async ({ email, password }) => {
@@ -37,7 +45,6 @@ const login = async ({ email, password }) => {
     console.log(`token`, token)
     return { existedUser, token }
 }
-
 
 module.exports = {
     createUser, login

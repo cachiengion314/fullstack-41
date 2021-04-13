@@ -1,31 +1,40 @@
 const express = require(`express`);
 const router = express.Router();
-const authController = require(`./authController`);
+const authController = require(`./authController`)
+const { isAuth } = require("../../middleware/isAuth")
 
 router.post(`/signup`, async (request, response) => {
-    let newUser;
     try {
         const { email, password } = request.body
         console.log(`signup1`, email, password)
-        newUser = await authController.createUser({ email, password })
+        let newUser = await authController.createUser({ email, password })
+        response.send({ success: 1, data: newUser })
     } catch (err) {
         console.log(`err`, err)
-        response.status(500).send({ success: 0, messenger: err });
+        response.status(500).send({ success: 0, messenger: err })
         return;
     }
-    response.send({ success: 1, data: newUser });
-});
+})
 
 router.post(`/login`, async (request, response) => {
-    let foundUser;
     try {
         const { email, password } = request.body;
-        foundUser = await authController.login({ email, password });
+        const foundUser = await authController.login({ email, password })
+        response.send({ success: 1, data: foundUser })
+    } catch (err) {
+        response.status(500).send({ success: 0, messenger: err })
+        return;
+    }
+})
+
+router.get(`/user`, isAuth, async (request, response) => {
+    try {
+        const user = request.user
+        response.send({ success: 1, data: user })
     } catch (err) {
         response.status(500).send({ success: 0, messenger: err });
         return;
     }
-    response.send({ success: 1, data: foundUser });
-});
+})
 
 module.exports = router;

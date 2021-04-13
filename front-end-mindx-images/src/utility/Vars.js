@@ -1,4 +1,8 @@
+import axios from "../api"
 const Vars = {
+    //
+    // home
+    //
     PAGE_SIZE: 4,
     getDataFromPage: async (client, page) => {
         return await client({
@@ -10,6 +14,52 @@ const Vars = {
             }
         })
     },
+    //
+    // user sign status 
+    //
+    signIn: (token, setUser, history) => {
+        Vars.saveTokenToLocal(token)
+        Vars.getAndSetUserData(setUser)
+        Vars.redirectToHome(history)
+    }
+    ,
+    saveTokenToLocal: (token) => {
+        localStorage.setItem(`mindx-img-token`, token)
+    }
+    ,
+    redirectToHome: (history) => {
+        history.push("/")
+    },
+    getAndSetUserData: async (setUser) => {
+        try {
+            const res = await axios({
+                url: "/api/auth/user",
+                method: "GET"
+            })
+            if (res.data.success) {
+                setUser(res.data.data)
+                return true
+            }
+            return false
+        } catch (err) {
+            console.log(`catch.err`, err)
+            return false
+        }
+    },
+    signOut: (setUser) => {
+        setUser(null)
+        localStorage.clear()
+    },
+    isUserSignIn: () => {
+        let hasToken = localStorage.getItem("mindx-img-token")
+        if (hasToken) {
+            return true
+        }
+        return false
+    },
+    //
+    // auth
+    //
     authenticateUserInput: (email_input, password_input, emailFailAction, passwordFailAction) => {
         const isEmailInputValid = Vars.checkEmailInput(email_input);
         const isPasswordInputValid = Vars.checkPasswordInput(password_input);
