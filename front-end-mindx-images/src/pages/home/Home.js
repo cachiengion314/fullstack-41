@@ -58,6 +58,7 @@ const Home = () => {
             return (
                 <Col xs={12} md={3} key={post._id}>
                     <PostCard
+                        id={post._id}
                         title={post.title}
                         imageUrl={post.imageUrl}
                         description={post.description}

@@ -23,7 +23,7 @@ const MainLayout = ({ children }) => {
                                 </Nav.Item>
                                 <Nav.Item>
                                     <Dropdown as={ButtonGroup}>
-                                        <Dropdown.Toggle split variant="success" id="dropdown-split-basic" />
+                                        <Dropdown.Toggle split variant="success" id="dropdown-split-basic" className="bg-dark border-white" />
                                         <Dropdown.Menu>
                                             <Dropdown.Item onClick={Vars.signOut.bind(null, setUser)} href="#/action-1">Sign Out</Dropdown.Item>
                                         </Dropdown.Menu>

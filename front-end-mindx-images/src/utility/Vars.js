@@ -30,6 +30,24 @@ const Vars = {
     redirectToHome: (history) => {
         history.push("/")
     },
+    postComment: async (commentInfo) => {
+        try {
+            const res = await axios({
+                url: "/api/comments/post-comment",
+                method: "POST",
+                data: commentInfo
+            })
+            const doc = res.data
+            if (doc.success) {
+                console.log(doc)
+                return true
+            }
+            return false
+        } catch (err) {
+            console.log(`catch.err`, err)
+            return false
+        }
+    },
     getAndSetUserData: async (setUser) => {
         try {
             const res = await axios({
@@ -38,6 +56,24 @@ const Vars = {
             })
             if (res.data.success) {
                 setUser(res.data.data)
+                return true
+            }
+            return false
+        } catch (err) {
+            console.log(`catch.err`, err)
+            return false
+        }
+    },
+    getAndSetPostInfo: async (setPostIfo, postId) => {
+        try {
+            const res = await axios({
+                url: `/api/posts/${postId}`,
+                method: "GET"
+            })
+            let doc = res.data
+            if (doc.success) {
+                setPostIfo(doc.data)
+                // console.log(`postdetail:`, doc.data)
                 return true
             }
             return false
@@ -60,7 +96,7 @@ const Vars = {
     //
     // auth
     //
-    authenticateUserInput: (email_input, password_input, emailFailAction, passwordFailAction) => {
+    authenticateUserInput: (email_input, password_input, emailFailAction = () => { }, passwordFailAction = () => { }) => {
         const isEmailInputValid = Vars.checkEmailInput(email_input);
         const isPasswordInputValid = Vars.checkPasswordInput(password_input);
         if (!isEmailInputValid) {
@@ -74,14 +110,14 @@ const Vars = {
         return true
     },
     checkPasswordInput: (password_input) => {
-        let check = /^\S{3,}/
+        const check = /^\S{3,}/
         if (check.test(password_input)) {
             return true
         }
         return false
     },
     checkEmailInput: (email_input) => {
-        let checkemail_regexp = /^[a-zA-Z]\S+@.+/
+        const checkemail_regexp = /^[a-zA-Z]\S+@.+/
         if (checkemail_regexp.test(email_input)) {
             return true
         }

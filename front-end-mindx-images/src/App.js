@@ -15,11 +15,13 @@ import PublicRoute from "./route/PublicRoute"
 import ProtectedRoute from "./route/ProtectedRoute"
 import GuestRoute from "./route/GuestRoute"
 import Vars from './utility/Vars';
+import DetailPost from './components/post-card/DetailPost';
 
 export const AuthContext = React.createContext()
 
 function App() {
   const [user, setUser] = React.useState(null)
+
   const controlUserSignStatus = async () => {
     if (Vars.isUserSignIn()) {
       const succsess = await Vars.getAndSetUserData(setUser)
@@ -53,7 +55,7 @@ function App() {
               <div>Create</div>
             </ProtectedRoute>
             <PublicRoute path="/posts/:id">
-              <div>Detail post</div>
+              <DetailPost />
             </PublicRoute>
             <PublicRoute path="*">
               <div>404 page</div>
