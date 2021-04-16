@@ -11,7 +11,6 @@ const MainLayout = ({ children }) => {
     const history = useHistory()
 
     const pustImg = () => {
-        console.log(`sdfjsldkfj`)
         history.push("/create")
     }
 
