@@ -17,12 +17,12 @@ app.use(cors())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json({ extended: true }))
 app.use(`*`, logger)
-app.use(`/`, (req, res) => {
-    res.send("welcome")
-})
 app.use(`/api/auth`, authRoute)
 app.use(`/api/posts`, postRoute)
 app.use(`/api/comments`, commentRoute)
+app.get(`/`, (req, res) => {
+    res.send("welcome to post image server!")
+})
 // listen
 app.listen(PORT, () => {
     console.log(`server is listen at ${PORT}`);
