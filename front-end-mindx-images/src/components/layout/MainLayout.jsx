@@ -18,7 +18,7 @@ const MainLayout = ({ children }) => {
     return (
         <>
             <Navbar bg="dark" expand="lg" variant="dark">
-                <Navbar.Brand href="/">MindX-Images</Navbar.Brand>
+                <Navbar.Brand href="/">Post Your Images</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     {
