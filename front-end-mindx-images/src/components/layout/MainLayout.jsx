@@ -1,13 +1,20 @@
 import React from 'react'
 import { Navbar, Nav, Dropdown, ButtonGroup } from 'react-bootstrap'
 import {
-    Link
+    Link, useHistory
 } from 'react-router-dom'
 import { AuthContext } from "../../App"
 import Vars from '../../utility/Vars'
 
 const MainLayout = ({ children }) => {
     const { user, setUser } = React.useContext(AuthContext)
+    const history = useHistory()
+
+    const pustImg = () => {
+        console.log(`sdfjsldkfj`)
+        history.push("/create")
+    }
+
 
     return (
         <>
@@ -26,6 +33,7 @@ const MainLayout = ({ children }) => {
                                         <Dropdown.Toggle split variant="success" id="dropdown-split-basic" className="bg-dark border-white" />
                                         <Dropdown.Menu>
                                             <Dropdown.Item onClick={Vars.signOut.bind(null, setUser)} href="#/action-1">Sign Out</Dropdown.Item>
+                                            <Dropdown.Item onClick={pustImg}>Post Img</Dropdown.Item>
                                         </Dropdown.Menu>
                                     </Dropdown>
                                 </Nav.Item>

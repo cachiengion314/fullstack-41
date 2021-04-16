@@ -113,7 +113,6 @@ const DetailPost = () => {
                             )
                         }
                     </form>
-
                 </Col>
             </Row>
         </Container>

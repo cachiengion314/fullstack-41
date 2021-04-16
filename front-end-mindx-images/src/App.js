@@ -16,6 +16,7 @@ import ProtectedRoute from "./route/ProtectedRoute"
 import GuestRoute from "./route/GuestRoute"
 import Vars from './utility/Vars';
 import DetailPost from './components/post-card/DetailPost';
+import Create from './pages/create/Create';
 
 export const AuthContext = React.createContext()
 
@@ -52,7 +53,7 @@ function App() {
               <SignUp />
             </GuestRoute>
             <ProtectedRoute path="/create">
-              <div>Create</div>
+              <Create />
             </ProtectedRoute>
             <PublicRoute path="/posts/:id">
               <DetailPost />
